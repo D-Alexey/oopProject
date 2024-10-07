@@ -1,11 +1,11 @@
 from random import randint
 
 class Person:
-    def __init__(self, health, damage, armor):
+    def __init__(self, health, damage, armor, name='none'):
         self.health = health
         self.damage = damage
         self.armor = armor
-        self.name = ''
+        self.name = name
 
     def __damage_calc(self, target):
         damage = self.damage + randint(-5, 5) - target.armor
@@ -24,13 +24,11 @@ class Person:
 
 class Player(Person):
     def __init__(self, health=100, damage=30, armor=20):
-        super().__init__(health, damage, armor)
-        self.name = 'Игрок'
+        super().__init__(health, damage, armor, 'Игрок')
 
 class Enemy(Person):
     def __init__(self, health=70, damage=35, armor=20):
-        super().__init__(health, damage, armor)
-        self.name = 'Враг'
+        super().__init__(health, damage, armor, 'Враг')
 
 class Fight:
     def __init__(self, fighter_1, fighter_2):
